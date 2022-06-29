@@ -2,16 +2,89 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border:none;
+}
+
+body{
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
 #main{
+  background-color: blue;
   width: 30rem;
   height: 45rem;
   display: grid;
   grid-template-columns: repeat(4,1fr);
+  grid-template-rows: 0.75fr, repeat(5,1fr);
+  border-radius:16px;
+  padding: 1rem;
+  border: 3px solid black;
+  gap: 1rem;
+  grid-template-areas: 'visor visor visor visor'
+                      'first-line first-line first-line first-line'
+                      'numbers numbers numbers plus-equal'
+                      'numbers numbers numbers plus-equal'
+                      'numbers numbers numbers plus-equal'
+                      'zero-point zero-point zero-point plus-equal'
 }
 
 #visor{
-  grid-column: 1/-1;
+  grid-area: visor;
+  font-size: 3rem;
+  text-align: right;
+  border-radius: 1rem;
+  border: .5rem solid black;
 }
 
+#main button {
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#first-line, #numbers, #plus-equal, #zero-point{
+  display: grid;
+  gap: 1rem;
+}
+
+#first-line{
+  grid-area: first-line;
+  grid-template-columns: repeat(4,1fr);
+}
+
+#plus-equal {
+  grid-area: plus-equal;
+  grid-template-rows: repeat(2,1fr);
+}
+
+
+#plus-equal button, #first-line button{
+  background-color: #f69807;
+}
+
+#plus-equal button {
+  border-radius: 20rem;
+}
+
+#numbers{
+  grid-area: numbers;
+  grid-template-columns:repeat(3,1fr) ;
+  grid-template-rows:repeat(3,1fr) ;
+}
+
+#zero-point {
+  grid-area: zero-point;
+  grid-template-columns: 2fr 1fr;
+}
+
+#numbers button,#zero-point button{
+  background-color: #303130;
+  color: white;
+}
+
+#zero-point button[data-button='0']{
+  border-radius: 20rem;
+}
